@@ -1,13 +1,13 @@
 Vorbereitung
 ------------
 
-Bitte stelle sicher, dass du (https://git-scm.com/), maven (https://maven.apache.org/), JDK 1.8 (https://java.com/de/download/) und npm (https://www.npmjs.com/) installiert hast.
+Bitte stelle sicher, dass du (https://git-scm.com/), maven (https://maven.apache.org/), JDK 1.8 (https://java.com/de/download/) und npm (https://www.npmjs.com/) und angular-cli (``npm install -g @angular/cli``) installiert hast.
 
 
 Führe dann diese Schritte aus, um die App zu starten:
 - Klone dieses Repository mit git, importiere das Projekt als Maven-Projekt in eine IDE (IntelliJ, Eclipse) deiner Wahl
 - Öffne eine Konsole und navigiere zu 'spring-angular-2-cli-starter', dann führe den folgenden Befehl aus: `mvn spring-boot:run`. Maven wird jetzt die Dependencies downloaden und die Spring Boot Backend App starten. Dies kann eine Weile dauern. Wenn das Backend gestartet ist, ist es unter ``http://localhost:8080`` aufrufbar. Um Änderungen im Backend-Code zu übernehmen, musst du den Prozess stoppen und mittels `mvn spring-boot:run` erneut starten.
-- Navigiere in einer weiteren Konsole in den Ordner "spring-angular-2-cli-starter/src/main/client" and führe den Befehl ``npm start`` aus. Das angular.io Frontend wird starten und sollte dann unter ``http://localhost:4200`` verfügbar sein. Änderungen im Frontend Code werden automatisch übernommen.
+- Navigiere in einer weiteren Konsole in den Ordner "spring-angular-2-cli-starter/src/main/client" and führe erst den Befehl ``npm install`` und dann den Befehl ``npm start`` aus. Das angular.io Frontend wird starten und sollte dann unter ``http://localhost:4200`` verfügbar sein. Änderungen im Frontend Code werden automatisch übernommen.
 
 
 Wir empfehlen dir, etwas durch den Code zu klicken und ich einzulesen. Wir haben etwas Hello-World Code zur Verfügung gestellt, welches dir simple Features von Spring Boot und Angular 2 demonstrieren sollten. Wir empfehlen dir spezifisch (aber nicht ausschliesslich) die folgenden Files anzuschauen: 
@@ -19,7 +19,7 @@ Wir empfehlen dir, etwas durch den Code zu klicken und ich einzulesen. Wir haben
 Aufgabe
 --------
 
-Programmiere ein WG-Einkaufsprotokol, welches die folgenden Features haben sollte (Sortiert nach absteigender Priorität der Features):
+Programmiere ein WG-Einkaufsprotokol, welches die folgenden Features haben sollte (sortiert nach absteigender Priorität der Features):
 
 - Benutzer der Apps können Einkäufe (Name des Einkäufers, Name des Produktes, Datum, Preis) abspeichern
 - Im Frontend wird das Einkaufsprotokoll (also die Liste aller erfassten Einkäufe) angezeigt
