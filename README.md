@@ -10,7 +10,7 @@ Führe dann diese Schritte aus, um die App zu starten:
 - Navigiere in einer weiteren Konsole in den Ordner "spring-angular-2-cli-starter/src/main/client" and führe erst den Befehl ``npm install`` und dann den Befehl ``npm start`` aus. Das angular.io Frontend wird starten und sollte dann unter ``http://localhost:4200`` verfügbar sein. Änderungen im Frontend Code werden automatisch übernommen.
 
 
-Wir empfehlen dir, etwas durch den Code zu klicken und ich einzulesen. Wir haben etwas Hello-World Code zur Verfügung gestellt, welches dir simple Features von Spring Boot und Angular 2 demonstrieren sollten. Wir empfehlen dir spezifisch (aber nicht ausschliesslich) die folgenden Files anzuschauen: 
+Wir empfehlen dir, etwas durch den Code zu klicken und dich einzulesen. Wir haben etwas Hello-World Code zur Verfügung gestellt, welcher dir simple Features von Spring Boot und Angular 2 demonstrieren sollten. Wir empfehlen dir spezifisch (aber nicht ausschliesslich) die folgenden Files anzuschauen: 
 
 - Frontend: ``scratch.component.html`` und ``scratch.component.ts``.
 - Backend: ``UserController.java`` und ``UserDto.java``. Beachte: Das Backend benutzt Lombok um Boilderplate Code (z.B. `@Getter` und `@Setter`) automatisch zu generieren. Du kannst natürlich auch Vanilla Java ('reines' Java ohne Frameworks) benutzen.
