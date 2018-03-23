@@ -1,134 +1,54 @@
-<img src="src/main/frontend/public/boot-logo.png" height="120px"><img style="margin-bottom: 20px" src="src/main/frontend/public/plus.png" height="80px"><img src="src/main/frontend/public/ng-logo.png" height="120px">
-# Spring Boot and Angular 2 starter app
+Vorbereitung
+------------
 
-> Starter webapp using Spring Boot on the backend and Angular 2 on the frontend, with 
-Maven and Angular CLI as build tools and with hot reloading on both sides.
-
-## Quickstart
-Run the app:
-
-    git clone https://github.com/dlizarra/spring-angular2-cli-starter.git
-    cd spring-angular2-cli-starter
-    mvn spring-boot:run
-
-The app will be available at `http://localhost:8080`. 
-
-There's also a sample REST endpoint at [/users](http://localhost:8080/users), the H2 console at [/h2-console](http://localhost:8080/h2-console) and all the endpoints exposed by [Spring Boot Actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html) ([/health](http://localhost:8080/health), [/beans](http://localhost:8080/beans), etc.)
+Bitte stelle sicher, dass du (https://git-scm.com/), maven (https://maven.apache.org/), JDK 1.8 (https://java.com/de/download/) and npm (https://www.npmjs.com/) installiert hast.
 
 
-## Start developing
-The Java code is available at `src/main/java` as usual, and the frontend source files are in 
-`src/main/frontend`.
-
-### Running the backend
-Run `StarterMain` class from your IDE.
-
-### Running the frontend
-Go to `src/main/frontend` and run `ng serve`.
-
-Now we should work with `http://localhost:4200` since this is where the Livereload server will serve the content. All the requests will be proxied to the Spring Boot backend at `http://localhost:8080`.
-
-We can change the proxy url in the [.ember-cli](src/main/frontend/.ember-cli) file.
-
-### How the build process works
-There are only  configuration files involved:
-
-- [package.json](src/main/frontend/package.json) where we have a "build" script that runs `ng build`.
-- [pom.xml](pom.xml#L139) in which we configure the frontend-maven-plugin to run this "build" script during the `generate-sources` phase.
-- The [.ember-cli](src/main/frontend/.ember-cli) file where we specify the output directory for the compiled frontend files, which is `src/main/resources/static`.
+Führe dann diese Schritte aus, um die App zu starten:
+- Klone dieses Repository mit git, importiere das Projekt als Maven-Projekt in eine IDE (IntelliJ, Eclipse) deiner Wahl
+- Öffne eine Konsole und navigiere  'spring-angular-2-cli-starter', dann führe den folgenden Befehl aus: `mvn spring-boot:run`. Maven wird jetzt die Dependencies downloaden und die Spring Boot Backend App starten. Dies kann eine Weile dauern. Wenn das Backend gestartet ist, ist es unter ``http://localhost:8080`` aufrufbar. Um Änderungen im Backend-Code zu übernehmen, musst du den Prozess stoppen und mittels ``mvn spring-boot:run' erneut starten.
+- Navigiere in einer weiteren Konsole in den Ordner "spring-angular-2-cli-starter/src/main/client" and führe den Befehl ``npm start`` aus. Das angular.io Frontend wird starten und sollte dann unter ``http://localhost:4200`` verfügbar sein. Änderungen im Frontend Code werden automatisch übernommen.
 
 
-When we run `mvn spring-boot:run` the frontend source files will be compiled and left at `src/main/resources/static` which is one of the default locations that Spring Boot specifies for static content (the others are /META-INF/resources, /resources and /public), so it will take those files and move them to `target/classes/static`.
+Wir empfehlen dir, etwas durch den Code zu klicken und ich einzulesen. Wir haben etwas Hello-World Code zur Verfügung gestellt, welches dir simple Features von Spring Boot und Angular 2 demonstrieren sollten. Wir empfehlen dir spezifisch (aber nicht ausschliesslich) die folgenden Files anzuschauen: 
+
+- Frontend: ``scratch.component.html`` und ``scratch.component.ts``.
+- Backend: ``UserController.java`` und ``UserDto.java``. Beachte: Das Backend benutzt Lombok um Boilderplate Code (z.B. `@Getter` und `@Setter`) automatisch zu generieren. Du kannst natürlich auch Vanilla Java ('reines' Java ohne Frameworks) benutzen.
 
 
-### Hot reloading
-In the **backend** we make use of Spring DevTools to enable hot reloading, 
-so every time we make a change in our files an application restart will
-be triggered automatically.
+Aufgabe
+--------
 
-Keep in mind that Spring DevTools automatic restart only works if we run the 
-application by running the main method in our app, and not if for example we run 
-the app with maven with `mvn spring-boot:run`.
+Programmiere ein WG-Einkaufsprotokol, welches die folgenden Features haben sollte (Sortiert nach absteigender Priorität der Features):
 
-In the **frontend** when we run `ng serve` Angular CLI starts an Ember Livereload server that will watch for any change in our frontend files.
+- Benutzer der Apps können Einkäufe (Name des Einkäufers, Name des Produktes, Datum, Preis) abspeichern
+- Im Frontend wird das Einkaufsprotokoll (also die Liste aller erfassten Einkäufe) angezeigt
+- Gespeicherte Einkäufe können (einzeln) gelöscht werden.
+- Beim Einkaufsprotokoll wird die Summe der Preise angezeigt.
+- Gespeicherte Einkäufe können (einzeln) bearbeitet werden.
+- Beim Einkaufsprotokoll wird die Summe der Einkäufe pro Einkäufer angezeigt, am liebsten in einem Kuchendiagramm.
+- Eine Funktion soll es ermöglichen, Einkaufssummen-Differenzen zwischen Einkäufern auszugleichen. Dazu sollen die entsprechenden Beträge, die ein spezifischer Einkäufer einem anderen Einkäufer abgeben muss, angezeigt werden und bei Bestätigung die entsprechenden Einträge ins Einkaufsprotokoll gesetzt werden. 
 
-### Profiles
+Um es dir etwas einfacher zu machen kannst du auf das User-Handling verzichten: D.h. Benutzer müssen sich nicht einloggen und alle Benutzer der App dürfen alle Einträge sehen, löschen und bearbeiten.
 
-The project comes prepared for being used in three different environments plus 
-another one for testing. We use Spring Profiles in combination with Boot feature for 
-loading properties files by naming convention (application-*\<profile name\>*.properties).
+Für die Aufgabe, nach der Installation der App, hast du etwa vier Stunden Zeit. 
 
-You can find the profile constants in 
-[StarterProfiles](src/main/java/com/dlizarra/starter/StarterProfiles.java) 
-and the properties files in `src/main/resources`.
+Abgabe
+------
 
-### Database
-The database connections are configured in 
-[DatabaseConfig](src/main/java/com/dlizarra/starter/DatabaseConfig.java)
-where we can find a working H2 embedded database connection for the default profile, and the staging and production configurations examples for working with an external database.
+Bitte sende uns 
+- Einen Link zu einem Git Repository (bei einem beliebigen Hoster) mit deinem Code
 
-Instead of the default JDBC Tomcat connection pool we added a faster [Hikari CP](https://github.com/brettwooldridge/HikariCP) one.
+- Ein Dokument, in welchem du deine Arbeit kurz beschreibst: Wo gab es Probleme? Womit würdest du weitemachen? Was gefällt dir nicht an deinem Code?
 
-### Repository layer
-The project includes three base data repositories:
+Tipps
+-----
+- Kommst du bei einem Feature nicht weiter oder hast du mit einer bestimmten Stelle im Code ein Problem, versuche daran nicht zu viel Zeit zu verlieren sondern Beschreibe dein Problem in einem Kommentar und versuche einen Umweg zu finden. Zum Beispiel kannst du, wenn du mit Spring Data und der Datenbank dich nicht zurecht findest, dies entsprechend dokumentieren und eine Datenbank mittels einer statischen Liste in deinem Code simulieren.
 
-- [ReadOnlyRepository](src/main/java/com/dlizarra/starter/support/jpa/ReadOnlyRepository.java): We can use this base repository when we want to make sure the application doesn't insert or update that type of entity, as it just exposes a set of methods to read entities.
-- [CustomCrudRepository](src/main/java/com/dlizarra/starter/support/jpa/CustomCrudRepository.java): It's the same as the `CrudRepository` that Spring Data provides, but the `findOne`method in the custom version returns a Java 8 `Optional<T>` object instead of `<T>`. It's just a small difference but it avoids having to override the `findOne` method in every repository to make it return an `Optional` object. This repository is intended to be used when we don't need paging or sorting capabilities for that entity.
-- [CustomJpaRepository](src/main/java/com/dlizarra/starter/support/jpa/CustomJpaRepository.java): Again, it's there to provide the same funcionality as the Spring `JpaRepository` but returning `Optional<T>`. We can extend this base repository if we want CRUD operations plus paging and sorting capabilities.
+- Stelle sicher, dass dein Code bei der Abgabe kompiliert, auch wenn du nicht alle Features vollständig implementiert hast. So können wir das bereits Programmierte testen.
 
-### Security
-All the boilerplate for the initial Spring Security configuration is already created. These are they key classes:
+- Test Code ist ein Plus, eine nachvollziehbare Commit History ebenso
 
-- [User](src/main/java/com/dlizarra/starter/user/User.java), [Role](src/main/java/com/dlizarra/starter/role/Role.java) and  [RoleName](src/main/java/com/dlizarra/starter/role/RoleName.java) which are populated by [data.sql](src/main/resources/data.sql) file for the default profile only.
-- [CustomUserDetails](src/main/java/com/dlizarra/starter/support/security/CustomUserDetails.java)
-- [CustomUserDetailsService](src/main/java/com/dlizarra/starter/support/security/CustomUserDetailsService.java)
-- [SecurityConfig](src/main/java/com/dlizarra/starter/SecurityConfig.java) with just very basic security rules.
+- Uns ist bewusst, dass die Zeit wohl nicht ausreichen wird, um alle Features zu implementieren ;-)
 
-### DTO-Entity mapping
-The project includes Orika and it already has a class, [OrikaBeanMapper](src/main/java/com/dlizarra/starter/support/orika/OrikaBeanMapper.java), ready to be injected anywhere and be used to do any mapping. It will also scan the project on startup searching for custom mappers and components.
-
-You can see how to use it in [UserServiceImpl](src/main/java/com/dlizarra/starter/user/UserServiceImpl.java) or in this sample [project](https://github.com/dlizarra/orika-spring-integration).
-
-This, along with Lombok annotations for auto-generating getters, setters, toString methods and such, allows us to have much cleaner Entities and DTOs classes.
-
-### Unit and integration testing
-For **unit testing** we included Spring Test, JUnit, Mockito and AssertJ as well as an [AbstractUnitTest](src/test/java/com/dlizarra/starter/support/AbstractUnitTest.java) class that we can extend to include the boilerplate annotations and configuration for every test. [UserServiceTest](src/test/java/com/dlizarra/starter/user/UserServiceTest.java) can serve as an example.
-
-To create integration tests we can extend [AbstractIntegrationTest](src/test/java/com/dlizarra/starter/support/AbstractIntegrationTest.java) and make use of Spring `@sql` annotation to run a databse script before every test, just like it's done in [UserRepositoryTest](src/test/java/com/dlizarra/starter/user/UserRepositoryTest.java).
-
-### Code coverage
-The project is also ready to use Cobertura as a code coverage utility and Coveralls to show a nice graphical representation of the results, get a badge with the results, etc. 
-
-The only thing you need to do is to create an account in [Coveralls.io](http://coveralls.io) and add your repo token key [here](pom.xml#L134) in the pom.xml.
-
-And if you want to use different tools you just need to remove the plugins from the pom.
-
-
-### Continuous integration and deployment
-A [travis.yml](.travis.yml) file is included with a minimal configuration just to use jdk 8, trigger the code analysis tool and deploy the app to Heroku using the `api_key` in the file. 
-
-We also included a Heroku [Procfile](Procfile) which declares the `web` process type and the java command to run our app and specifies which Spring Profile we want to use.
-
-
-
-## Tech stack and libraries
-### Backend
-- [Spring Boot](http://projects.spring.io/spring-boot/)
-- [Spring MVC](http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html)
-- [Spring Data](http://projects.spring.io/spring-data/)
-- [Spring Security](http://projects.spring.io/spring-security/)
-- [Spring Test](http://docs.spring.io/autorepo/docs/spring-framework/3.2.x/spring-framework-reference/html/testing.html)
-- [JUnit](http://junit.org/)
-- [Mockito](http://mockito.org/)
-- [AssertJ](http://joel-costigliola.github.io/assertj/)
-- [Lombok](https://projectlombok.org/)
-- [Orika](http://orika-mapper.github.io/orika-docs/)
-- [Maven](https://maven.apache.org/)
-
-### Frontend
-- [Angular 2](https://angular.io/)
-- [Angular CLI](https://cli.angular.io/)
-- [Moment.js](http://momentjs.com/)
-
-
----
+- Bei Fragen stehen wir dir gerne zur Verfügung
