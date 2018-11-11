@@ -5,16 +5,20 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ScratchComponent } from './scratch/scratch.component';
 import {HttpClientModule} from "@angular/common/http";
+import { EinkaufsprotokollComponent } from './einkaufsprotokoll/einkaufsprotokoll.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScratchComponent
+    ScratchComponent,
+    EinkaufsprotokollComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
 

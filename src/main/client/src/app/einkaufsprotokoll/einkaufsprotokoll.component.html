@@ -1,0 +1,47 @@
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Einkäufer</th>
+    <th>Produkt</th>
+    <th>Datum</th>
+    <th>Preis</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let field of fieldArray; let i = index">
+    <td>
+      <input [(ngModel)]="field.einkaeufer" class="form-control" type="text" name="{{field.einkaeufer}}" />
+    </td>
+    <td>
+      <input [(ngModel)]="field.produkt" class="form-control" type="text" name="{{field.produkt}}" />
+    </td>
+    <td>
+      <input [(ngModel)]="field.datum" class="form-control" type="text" name="{{field.datum}}" />
+    </td>
+    <td>
+      <input [(ngModel)]="field.preis" class="form-control" type="text" name="{{field.preis}}" />
+    </td>
+    <td>
+      <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input class="form-control" type="text" id="newAttributeEinkaeufer" [(ngModel)]="newAttribute.einkaeufer" name="newAttributeEinkaeufer" />
+    </td>
+    <td>
+      <input class="form-control" type="text" id="newAttributeProdukt" [(ngModel)]="newAttribute.produkt" name="newAttributeProdukt" />
+    </td>
+    <td>
+      <input class="form-control" type="text" id="newAttributeDatum" [(ngModel)]="newAttribute.datum" name="newAttributeDatum" />
+    </td>
+    <td>
+      <input class="form-control" type="text" id="newAttributePreis" [(ngModel)]="newAttribute.preis" name="newAttributePreis" />
+    </td>
+    <td>
+      <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
