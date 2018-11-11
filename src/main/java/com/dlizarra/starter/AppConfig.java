@@ -8,5 +8,6 @@ import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class })
 public class AppConfig {
+
 	// servlets, view resolvers...
 }
