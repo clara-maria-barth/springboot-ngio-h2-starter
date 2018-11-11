@@ -18,20 +18,22 @@ public class ProtokollEntryController {
     @Autowired
     private EinkaufsprotokollSevice einkaufsprotokollSevice;
 
-    @GetMapping(value= CONTEXT)
+    @RequestMapping(value = CONTEXT, method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<Einkaufsprotokoll> getEinkaufsprotokolle(){
         return einkaufsprotokollSevice.getEinkaufsprotokolle();
     }
 
-    @PostMapping(value= CONTEXT)
+    @RequestMapping(value= CONTEXT, method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void createEinkaufsprotokoll(@RequestBody Einkaufsprotokoll protokoll){
         einkaufsprotokollSevice.addEinkaufsprotokoll(protokoll);
     }
-/*    @PutMapping(value = CONTEXT)
+    @RequestMapping(value = CONTEXT, method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public */
+    public void addEinkaufsprotokoll(Einkaufsprotokoll einkaufsprotokoll){
+        einkaufsprotokollSevice.addEinkaufsprotokoll(einkaufsprotokoll);
+    }
 
     @Transactional
     @RequestMapping(value = CONTEXT + "/{id}", method = RequestMethod.DELETE)

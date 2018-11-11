@@ -17,6 +17,15 @@ public class Einkaufsprotokoll {
     @Column(unique = true)
     private long id;
 
+    @Column
+    private String buyer;
+
+    @Column
+    private String date;
+
+    @Column
+    private Long price;
+
 
 public Einkaufsprotokoll(){
 

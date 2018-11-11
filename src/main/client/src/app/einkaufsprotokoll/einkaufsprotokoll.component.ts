@@ -13,18 +13,25 @@ export class EinkaufsprotokollComponent implements OnInit {
   einkaufsprotokolle: Einkaufsprotokoll[];
 
 
-  constructor( private httpClient:HttpClient) { }
+  constructor( private httpClient:HttpClient) {
+
+  }
   ngOnInit() {
-    this.httpClient.get<einkaufsprotokolle[]>("api/einkaufsprotokolle")
+    this.httpClient.get<Einkaufsprotokoll[]>("http://localhost:8080/einkaufsprotokolle")
       .subscribe(resp => {
+        console.log(resp);
         this.einkaufsprotokolle = resp;
       });
 
-
   }
   addFieldValue() {
-    this.fieldArray.push(this.newAttribute)
+    this.fieldArray.push(this.newAttribute);
+    console.log('new ', this.newAttribute);
+    //this.httpClient.post()
     this.newAttribute = {};
+
+
+
   }
 
   deleteFieldValue(index) {
