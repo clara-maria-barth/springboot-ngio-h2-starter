@@ -7,6 +7,7 @@ import { ScratchComponent } from './scratch/scratch.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EinkaufsprotokollComponent } from './einkaufsprotokoll/einkaufsprotokoll.component';
 import {FormsModule} from "@angular/forms";
+import {ProtokollServiceService} from "./protokoll-service.service";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule
   ],
   providers: [
+    ProtokollServiceService
 
   ],
   bootstrap: [AppComponent]

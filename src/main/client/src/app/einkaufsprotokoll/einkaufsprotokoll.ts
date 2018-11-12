@@ -1,10 +1,10 @@
 export class Einkaufsprotokoll{
 
   public id: number;
-  public username: string;
+  public buyer: string;
   public product: string;
-  public date: boolean;
-  public price: string;
+  public date: string;
+  public price: number;
 
 
 }
