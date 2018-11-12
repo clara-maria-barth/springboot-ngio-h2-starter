@@ -1,6 +1,7 @@
 <table class="table table-striped table-bordered">
   <thead>
   <tr>
+    <th></th>
     <th>Buyer</th>
     <th>Product</th>
     <th>Date</th>
@@ -10,7 +11,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let field of fieldArray; let i = index">
-
+    <td>
+      <label> {{i}}:    </label>
+    </td>
     <td>
       <input [(ngModel)]="field.buyer" class="form-control" type="text" name="{{field.buyer}}" />
     </td>
@@ -18,7 +21,7 @@
       <input [(ngModel)]="field.product" class="form-control" type="text" name="{{field.product}}" />
     </td>
     <td>
-      <input [(ngModel)]="field.datum" class="form-control" type="text" name="{{field.datum}}" />
+      <input [(ngModel)]="field.date" class="form-control" type="text" name="{{field.date}}" />
     </td>
     <td>
       <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
@@ -28,7 +31,7 @@
     </td>
   </tr>
   <tr>
-
+<td></td>
     <td>
       <input class="form-control" type="text" id="newAttributeBuyer" [(ngModel)]="newAttribute.buyer" name="newAttributeBuyer" />
     </td>
@@ -36,7 +39,7 @@
       <input class="form-control" type="text" id="newAttributeProduct" [(ngModel)]="newAttribute.product" name="newAttributeProduct" />
     </td>
     <td>
-      <input class="form-control" type="text" id="newAttributeDatum" [(ngModel)]="newAttribute.date" name="newAttributeDatum" />
+      <input class="form-control" type="text" id="newAttributeDate" [(ngModel)]="newAttribute.date" name="newAttributeDate" />
     </td>
     <td>
       <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
@@ -48,12 +51,13 @@
   </tbody>
 </table>
 
-    <label> {{this.id}}:
+<div *ngFor="let item of Form; let i = index">
+<label> {{i}}</label>
       <input #buyer placeholder= 'buyer'>
       <input #product placeholder= 'product'>
       <input #date placeholder= 'date'>
       <input #price placeholder= 'price'>
       <button class="btn btn-default" type="button" (click)="addNewProtokoll(buyer.value, product.value, date.value, price.value)">Add</button>
 
-    </label>
+</div>
 

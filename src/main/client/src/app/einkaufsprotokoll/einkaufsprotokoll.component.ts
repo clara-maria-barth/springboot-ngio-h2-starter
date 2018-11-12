@@ -14,7 +14,7 @@ export class EinkaufsprotokollComponent implements OnInit {
   public newAttribute: any = {};
   public protokolle: Array<any> = [];
   public id: number;
-  public saveForm = false;
+  public Form: Array<any> = [0];
 
 
   constructor(
@@ -33,25 +33,32 @@ export class EinkaufsprotokollComponent implements OnInit {
   addFieldValue() {
     this.id += 1;
     this.fieldArray.push(this.newAttribute);
-    console.log('new ', this.fieldArray);
+    var id = { "id" : this.id}
+    var sendArray = Object.assign({}, id, this.newAttribute);
+    console.log('new ', sendArray);
     this.newAttribute = {}
-
+    this.protokollService.addProtokoll(sendArray)
+      .subscribe(protokoll => {
+        this.protokolle.push(protokoll);
+        console.log(this.protokolle)
+      });
 
   }
   addNewProtokoll(buyer: string, product: string, date: string, stringprice: string){
-    this.saveForm = true;
-        this.id += 1;
         buyer = buyer.trim();
-        console.log("buy: ", buyer)
+        console.log("buy: ", buyer);
         product = product.trim();
         date = date.trim();
         var price = parseFloat(stringprice);
-
     this.protokollService.addProtokoll({ "id" : this.id, buyer, product, date, price} as Einkaufsprotokoll)
       .subscribe(protokoll => {
         this.protokolle.push(protokoll);
         console.log(protokoll)
       });
+    this.id += 1;
+
+    this.Form.push(this.id);
+
   }
 
   deleteFieldValue(index) {
